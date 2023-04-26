@@ -1,23 +1,23 @@
-PImage[] olhosl = new PImage[2];
-PImage[] olhosr = new PImage[2];
+PImage[] olhosl = new PImage[4];
+PImage[] olhosr = new PImage[4];
 
-olhos[] o = new olhos[4];
+olhos[] o = new olhos[10];
 
 float x, y;
 int sy=5, sx=3 ;
 
-String fileDirection = "/Users/daniel/Documents/Mestrado/1º Ano/2º Semestre/ODM/teste/";
+String fileDirection = "/Users/daniel/Documents/Mestrado/1º Ano/2º Semestre/ODM/Parte Eletronica/teste/";
 void setup() {
   size(580, 843);
   
   for(int i = 0; i < 4; i++)
     o[i] = new olhos(random(0,width-50), random(0,height-80), random(width-50), random(height-80));
 
-  for (int i= 0; i < 2; i++) {
+  for (int i= 0; i < 4; i++) {
     olhosl[i] = loadImage(fileDirection+"olhosl"+i+".png");
   }
 
-  for (int i= 0; i < 2; i++) {
+  for (int i= 0; i < 4; i++) {
 
     olhosr[i] = loadImage(fileDirection+"olhosr"+i+".png");
   }
@@ -48,11 +48,11 @@ class olhos {
   }
 
   void display() {
-    for (int i= 0; i < 2; i++) {
+    for (int i= 0; i < 4; i++) {
       image(olhosl[i], x, y);
     }
 
-    for (int i= 0; i < 2; i++) {
+    for (int i= 0; i < 4; i++) {
       image(olhosr[i], x2, y2);
     }
   }
