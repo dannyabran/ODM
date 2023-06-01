@@ -56,7 +56,7 @@ void draw() {
     println("val="+val);
     dist = int(val.trim());
     println("dist="+dist);
-    if (dist > 350 && dist < 750) {
+    if (dist > 10 && dist < 15) {
       if (!cooldown)
         capture();
       cooldown=true;
