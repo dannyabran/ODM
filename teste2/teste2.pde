@@ -12,6 +12,11 @@ PImage[] olhosr = new PImage[4];
 String [] lines;
 int t=0;
 int k = 0;
+int red;
+int green;
+int blue;
+int mode;
+boolean rgb = true;
 
 frases[] f = new frases[5];
 
@@ -35,10 +40,9 @@ void setup() {
 
   lines = loadStrings("/Users/daniel/Documents/Mestrado/1º Ano/2º Semestre/ODM/Parte Eletronica/frases/data.txt");
 
-  String portName = Serial.list()[0];
+  String portName = Serial.list()[1];
 
   myPort = new Serial(this, portName, 9600);
-
 
 
   for (int i = 0; i < 4; i++) {
@@ -50,9 +54,33 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  if (myPort.available() > 0) {
+    val = myPort.readStringUntil('\n');
+    if (val != null) {
+      String[] pieces = val.split(",");
+      red = Integer.parseInt(pieces[0].trim());
+      green = Integer.parseInt(pieces[1].trim());
+      blue = Integer.parseInt(pieces[2].trim());
+      mode = Integer.parseInt(pieces[3].trim());
+    }
+  }
 
+  if (mode == 1) {
+    if (rgb) {
+      colorMode(HSB);  // Change colorMode to HSB
+      rgb = false;
+    } else {
+      colorMode(RGB);  // Change colorMode back to RGB
+      rgb = true;
+    }
+  }
 
+  println("red " +red);
+  println("green " +green);
+  println("blue " +blue);
+  println("mode " +mode);
+
+  background(red, green, blue);
   fill(0);
 
   frameRate(5);
@@ -82,6 +110,7 @@ void draw() {
     }
     println(val); // read it and store it in vals!
   }
+
   ///
   // t=input;
 
@@ -91,6 +120,7 @@ void draw() {
   //  sy*=-1;
   //if ( x + 100 > width  x< 0)
   //  sx*=-1;
+
   for (int i = 0; i < 4; i++) {
     // o[i].move();
     //o2[i].move();

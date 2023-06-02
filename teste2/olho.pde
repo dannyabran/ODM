@@ -30,6 +30,14 @@ class ol {
     if ( x + 100 > width || x< 0)
       sx*=-1;
   }
+
+  float getX() {
+    return x;
+  }
+
+  float getY() {
+    return y;
+  }
 }
 
 class or {
@@ -55,7 +63,7 @@ class or {
       y2 = random(0, height-80);
     }
   }
-  
+
   void move() {
     x2+=sx;
     y2+=sy;
@@ -63,5 +71,13 @@ class or {
       sy*=-1;
     if ( x2 + 100 > width || x2< 0)
       sx*=-1;
+  }
+  
+  float getX2() {
+    return x2;
+  }
+
+  float getY2() {
+    return y2;
   }
 }
