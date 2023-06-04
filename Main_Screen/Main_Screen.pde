@@ -47,7 +47,7 @@ void setup() {
   };
   
   //Load of the frases shown
-  lines = loadStrings("/Users/daniel/Documents/Mestrado/1º Ano/2º Semestre/ODM/Parte Eletronica/frases/data.txt");
+  
 
   filter = loadImage("filter.png");
 
@@ -71,7 +71,9 @@ void setup() {
 }
 
 void draw() {
+  background(255);
   
+  lines = loadStrings("/Users/daniel/Documents/Mestrado/1º Ano/2º Semestre/ODM/ODM/Interacao_frases/output.txt");
   //Arduino
   if (myPort.available() > 0) {
     val = myPort.readStringUntil('\n');
@@ -95,9 +97,9 @@ void draw() {
     }
   }
 
-  filter.resize(width, height);
-  tint(red, green, blue);
-  image(filter, 0, 0);
+  //filter.resize(width, height);
+  //tint(red, green, blue);
+  //image(filter, 0, 0);
 
   // Increment k every 0.2 seconds
   frameCount++;

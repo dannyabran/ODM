@@ -3,9 +3,9 @@ String filename = "output.txt";  // Name of the output file
 String message = "";  // Message to be written to the file
 Button a, b, c;
 int level = 0;
-PImage paul;
-PFont fala, question, button;
-
+PImage paul, background;
+PFont fala, question, button, bodoni;
+boolean answered = false;
 int currentIndex = 0; // Index of the current character being displayed
 int typingSpeed = 50; // Speed of typing (in milliseconds)
 int startTime; // Time when typing started
@@ -15,13 +15,16 @@ void setup() {
 
   fala = loadFont("CourierNewPS-BoldMT-100.vlw");
   question = loadFont("Futura-Bold-150.vlw");
+  bodoni = loadFont("BodoniSvtyTwoITCTT-Bold-100.vlw");
   button = loadFont("Futura-Medium-100.vlw");
+  background = loadImage("Horizontal.png");
+  background.resize(width+100, height+100);
   paul = loadImage("paul.jpg");
   paul.resize(width, height);
   // Create a button
-  a = new Button(width/2, height/2, 300, 80, "Art", color(255,0,0));
-  b = new Button(width/2, height/2 + 100, 300, 80, "Everything", color(255,255,0));
-  c = new Button(width/2, height/2 + 200, 300, 80, "Trying", color(255,0,255));
+  a = new Button(300, height/2, 300, 80, "Art", #ef3a20);
+  b = new Button(300, height/2 + 100, 300, 80, "Everything", #7da251);
+  c = new Button(300, height/2 + 200, 300, 80, "Trying", #7d58a9);
   startTime = millis();
 }
 
@@ -45,6 +48,11 @@ void draw() {
     saveFile = false;
     message = "";
   }
+  
+  if(level == 1 && answered == true){
+    level = 0;
+    answered = false;
+  }
 }
 
 void mouseClicked() {
@@ -53,18 +61,21 @@ void mouseClicked() {
     // Set the saveFile flag to true
     saveFile = true;
     message = "Design can be Art";
+    answered = true;
   }
   
   if (b.onTop()) {
     // Set the saveFile flag to true
     saveFile = true;
     message = "Everything is Design";
+    answered = true;
   }
   
   if (c.onTop()) {
     // Set the saveFile flag to true
     saveFile = true;
     message = "Just try to be good";
+    answered = true;
   }
   
   if(level == 0)
@@ -86,14 +97,18 @@ class Button {
   }
 
   void display() {
+    noStroke();
     textFont(button);
     textSize(40);
     rectMode(CENTER);
-    fill(cor);
-    rect(x, y, width, height, 28);
-    fill(0);
+    fill(cor, 200);
+    rect(x, y, width, height, 5);
     textAlign(CENTER, CENTER);
+    fill(0, 200);
+    text(label, x-1, y+1);
+    fill(255);
     text(label, x, y);
+    
   }
 
   boolean onTop() {

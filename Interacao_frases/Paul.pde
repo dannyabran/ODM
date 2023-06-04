@@ -1,7 +1,8 @@
 void level1() {
   imageMode(CENTER);
   image(paul, width/2, height/2);
-
+  
+  noTint();
   String mess = "Now that you have experienced what I did, I have a question for you.";
 
   // Check if there are characters left to be displayed

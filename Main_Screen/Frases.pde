@@ -1,14 +1,12 @@
 class frases {
   float x = 5, y = 120;
-  int j, i;
-  float textWidth;
-  float textAscent;
+  int i;
 
   frases() {
   }
 
   void display() {
-    nome = split(lines[t], " "); //Split the frases into just words
+    nome = split(lines[0], " "); //Split the frases into just words
     for (i = 0; i < nome.length; i++) {
       fill(0);
       textSize(80);
