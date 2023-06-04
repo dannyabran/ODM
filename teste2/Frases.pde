@@ -8,25 +8,12 @@ class frases {
   }
 
   void display() {
-    nome = split(lines[t], " ");
+    nome = split(lines[t], " "); //Split the frases into just words
     for (i = 0; i < nome.length; i++) {
       fill(0);
       textSize(80);
-      textFont(font[k], 150);
-      text(nome[i], x, y + 150 * i);
-      j = i;
-     
+      textFont(font[k], 150); //Random of the fonts
+      text(nome[i], x, y + 150 * i); //Display the words
     }
-  }
-
-  boolean inside(float px, float py) {
-    if (px > x && px < x + textWidth(nome[j]) && py > y && py < y + textAscent())
-      return true;
-    else
-      return false;
-  }
-  
-  float gettextWidth(){
-    return textWidth(nome[j]);
   }
 }

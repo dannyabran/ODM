@@ -4,6 +4,7 @@ int greenPot = A1;
 int bluePot = A2;
 
 int mode = 0;
+int frase = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -13,6 +14,7 @@ void setup() {
   pinMode(bluePot, INPUT);
   
   pinMode(8, INPUT);
+  pinMode(10, INPUT_PULLUP);
 
 }
 
@@ -27,12 +29,20 @@ void loop() {
     mode = 0;
   }
 
+  if(digitalRead(10) == LOW){
+    frase = 1;
+  } else {
+    frase = 0;
+  }
+
   Serial.print(red);
   Serial.print(",");
   Serial.print(green);
   Serial.print(",");
   Serial.print(blue);
   Serial.print(",");
-  Serial.println(mode);
+  Serial.print(mode);
+  Serial.print(",");
+  Serial.println(frase);
   delay(150);
 }
