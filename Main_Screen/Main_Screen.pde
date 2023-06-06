@@ -71,7 +71,6 @@ void setup() {
 }
 
 void draw() {
-  background(255);
   
   lines = loadStrings("/Users/daniel/Documents/Mestrado/1º Ano/2º Semestre/ODM/ODM/Interacao_frases/output.txt");
   //Arduino
@@ -83,7 +82,6 @@ void draw() {
       green = Integer.parseInt(pieces[1].trim());
       blue = Integer.parseInt(pieces[2].trim());
       mode = Integer.parseInt(pieces[3].trim());
-      frase = Integer.parseInt(pieces[4].trim());
     }
   }
 
@@ -97,9 +95,9 @@ void draw() {
     }
   }
 
-  //filter.resize(width, height);
-  //tint(red, green, blue);
-  //image(filter, 0, 0);
+  filter.resize(width, height);
+  tint(red, green, blue);
+  image(filter, 0, 0);
 
   // Increment k every 0.2 seconds
   frameCount++;
